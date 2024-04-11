@@ -1,4 +1,6 @@
 # NithFC
+Author: @Neeqstock
+
 A Python script which extracts facial movement features in real-time by analizing the video stream of a webcam. It's part of the [NithSensors](https://github.com/LIMUNIMI/NITHsensors) collection, and it's built to be used for interaction purposes.
 
 The currently extracted facial movement features are:
