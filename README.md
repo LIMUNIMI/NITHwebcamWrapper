@@ -1,2 +1,58 @@
 # NithFC
- A NithSensor which extracts facial features by analizing the video stream of a webcam. Built using Mediapipe.
+A Python script which extracts facial movement features in real-time by analizing the video stream of a webcam. It's part of the [NithSensors](https://github.com/LIMUNIMI/NITHsensors) collection, and it's built to be used for interaction purposes.
+
+The currently extracted facial movement features are:
+- Head rotation (yaw and pitch)
+- Opening of the left and right eyes
+- Mouth opening
+
+Detected features are relayed locally over IP "127.0.0.1" on UDP port 20100, using the standard NithSensors communication protocol (see NithSensors [Readme](https://github.com/LIMUNIMI/NITHsensors)) This allows applications designed to work with NithSensors to receive and incorporate these detections.
+
+Landmarks extraction is provided by the [MediaPipe](https://google.github.io/mediapipe/) library.
+
+## Installation Guide
+
+### Step 1: Installing Python
+
+NithFC is built with Python, meaning you'll need Python installed on your computer to run it. If you're new to Python, follow this steps:
+
+1. Visit the [official Python website](https://www.python.org/downloads/).
+2. Download the latest version of Python for your operating system (Windows, macOS, Linux).
+3. Run the downloaded installer and follow the on-screen instructions. Make sure to check the box that says "Add Python X.X to PATH" during installation to make Python accessible from your command line or terminal.
+
+For a more detailed guide, you can check out this beginner-friendly [Python installation tutorial](https://realpython.com/installing-python/).
+
+### Step 2: Download NithFC
+
+You can download NithFC by cloning the repository from GitHub:
+
+```bash
+git clone https://github.com/LIMUNIMI/NithFC.git
+```
+
+### Step 3: Installing Dependencies
+
+With Python installed, open your command line or terminal and install the required dependencies by running:
+
+```bash
+pip install opencv-python numpy mediapipe python-osc
+```
+
+These dependencies include packages for computer vision operations, mathematics, data handling, extracting facial landmarks, and sending data over UDP.
+
+## Running NithFC
+To run NithFC, ensure you're in the NithFC directory in your command line or terminal. Then execute:
+
+```bash
+python main.py
+```
+
+Make sure your webcam is connected and properly setup as NithFC will immediately begin to capture and analyze facial movements.
+
+## Contributions and Support
+NithFC is licensed through a GNU GPL-v3 Free Open-Source software license. Feel free to contribute!
+
+You can open an Issue for any request regarding this code, or contact me (the developer) directly via email at *nicola.davanzo@unimi.it*.
+
+## Acknowledgements
+The head rotation analysis function is based on a Python script provided by [Nicolai Nielsen in a tutorial on YouTube](https://youtu.be/-toNMaS4SeQ?si=gcpJSJcbziH-V4DN)). Thank you 🙏
