@@ -55,4 +55,6 @@ NithFC is licensed through a GNU GPL-v3 Free Open-Source software license. Feel 
 You can open an Issue for any request regarding this code, or contact me (the developer) directly via email at *nicola.davanzo@unimi.it*.
 
 ## Acknowledgements
-The head rotation analysis function is based on a Python script provided by [Nicolai Nielsen in a tutorial on YouTube](https://youtu.be/-toNMaS4SeQ?si=gcpJSJcbziH-V4DN)). Thank you 🙏
+Thanks to one of my thesis students (@Ale-Gr), which contributed to this project with his thesis work. 🙏 Check out [his code](https://github.com/LIMUNIMI/TT-Alessandro_Grasso-2024-975295), which is a similar application which sends a similar set of features formatted using the OSC (Open Sound Control) protocol, provides a graphical user interface, a calibration system, and can be used to emulate the mouse cursor (for accessibility purposes).
+
+The head rotation analysis function is based on a Python script provided by [Nicolai Nielsen in a tutorial on YouTube](https://youtu.be/-toNMaS4SeQ?si=gcpJSJcbziH-V4DN). Thank you 🙏
