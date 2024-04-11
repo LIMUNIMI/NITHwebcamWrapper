@@ -5,8 +5,6 @@
   <img src="https://raw.githubusercontent.com/LIMUNIMI/NithFC/main/Readme_images/NithFC.png" width="50%" />
 </p>
 
-This code uses an HTML `<p>` tag with an `align` attribute set to `"center"` to center the content. The `<img>` tag sources your image and you can adjust its size using the `width` attribute. Here, I've set the width to 50% of the container's width, but you can adjust this percentage to make the image larger or smaller as per your needs.
-
 A Python script which extracts facial movement features in real-time by analizing the video stream of a webcam. It's part of the [NithSensors](https://github.com/LIMUNIMI/NITHsensors) collection, and it's built to be used for interaction purposes.
 
 The currently extracted facial movement features are:
