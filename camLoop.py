@@ -11,8 +11,8 @@ mp_face_mesh = mp.solutions.face_mesh
 # Create a face mesh object with minimum detection confidence and minimum tracking confidence thresholds.
 face_mesh = mp_face_mesh.FaceMesh(
     refine_landmarks=True,
-    min_detection_confidence=0.5,  # Minimum confidence value for the face detection model
-    min_tracking_confidence=0.5,  # Minimum confidence value for the landmark tracking model)
+    min_detection_confidence=0.1,  # Minimum confidence value for the face detection model
+    min_tracking_confidence=0.1,  # Minimum confidence value for the landmark tracking model)
 )
 # Import the drawing utilities module from Mediapipe.
 mp_drawing = mp.solutions.drawing_utils
@@ -58,10 +58,29 @@ def main_loop():
             )
 
             # Get eyes aperture ratio
+            # using eye aperture ratio
+            # (
+            #     left_eye_aperture_ratio,
+            #     right_eye_aperture_ratio,
+            # ) = camDetectionFunctions.get_eye_aperture_ratio_SEGMENTSMETHOD(
+            #     face_landmarks
+            # )
+
+            # using areas
+            # (
+            #     left_eye_aperture_ratio,
+            #     right_eye_aperture_ratio,
+            # ) = camDetectionFunctions.get_eye_aperture_ratio_SEGMENTSMETHOD(
+            #     face_landmarks
+            # )
+
+            # using twosegmentsmethod
             (
                 left_eye_aperture_ratio,
                 right_eye_aperture_ratio,
-            ) = camDetectionFunctions.get_eye_aperture_ratio(face_landmarks)
+            ) = camDetectionFunctions.get_eye_aperture_ratio_TWOSEGMENTSMETHOD(
+                face_landmarks
+            )
 
             # Get mouth aperture ratio
             mouth_aperture_ratio = camDetectionFunctions.get_mouth_aperture_ratio(

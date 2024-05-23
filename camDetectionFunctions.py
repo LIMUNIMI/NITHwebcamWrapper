@@ -3,10 +3,89 @@ import cv2
 import numpy as np
 from typing import NamedTuple
 
+# from shapely.geometry import Polygon
+
 
 class Point(NamedTuple):
     x: float
     y: float
+
+
+# Define the landmarks for the face and eyes
+face_border_indices = [
+    10,
+    338,
+    297,
+    332,
+    284,
+    251,
+    389,
+    356,
+    454,
+    323,
+    361,
+    288,
+    397,
+    365,
+    379,
+    378,
+    400,
+    377,
+    152,
+    148,
+    176,
+    149,
+    150,
+    136,
+    172,
+    58,
+    132,
+    93,
+    234,
+    127,
+    162,
+    21,
+    54,
+    103,
+    67,
+    109,
+]
+left_eye_indices = [
+    362,
+    382,
+    381,
+    380,
+    374,
+    373,
+    390,
+    249,
+    263,
+    466,
+    388,
+    387,
+    386,
+    385,
+    384,
+    398,
+]
+right_eye_indices = [
+    33,
+    7,
+    163,
+    144,
+    145,
+    153,
+    154,
+    155,
+    133,
+    173,
+    157,
+    158,
+    159,
+    160,
+    161,
+    246,
+]
 
 
 def get_distance(p1: Point, p2: Point) -> float:
@@ -89,7 +168,7 @@ def get_face_orientation(face_landmarks, img_w, img_h):
     return x, y, z
 
 
-def get_eye_aperture_ratio(face_landmarks):
+def get_eye_aperture_ratio_SEGMENTSMETHOD(face_landmarks):
     # Landmarks for eye width calculation
     LElandmarksW = [
         face_landmarks.landmark[33],
@@ -121,6 +200,83 @@ def get_eye_aperture_ratio(face_landmarks):
     RERatio = REh / REw if REw > 0 else 0
 
     return (LERatio, RERatio)
+
+
+def get_eye_aperture_ratio_TWOSEGMENTSMETHOD(face_landmarks):
+    # Landmarks for left eye
+    LElandmarksW = [
+        face_landmarks.landmark[33],
+        face_landmarks.landmark[133],
+    ]
+    LElandmarksH1 = [
+        face_landmarks.landmark[159],
+        face_landmarks.landmark[145],
+    ]
+    LElandmarksH2 = [
+        face_landmarks.landmark[158],
+        face_landmarks.landmark[153],
+    ]
+
+    # Landmarks for right eye
+    RElandmarksW = [
+        face_landmarks.landmark[362],
+        face_landmarks.landmark[263],
+    ]
+    RElandmarksH1 = [
+        face_landmarks.landmark[386],
+        face_landmarks.landmark[374],
+    ]
+    RElandmarksH2 = [
+        face_landmarks.landmark[385],
+        face_landmarks.landmark[380],
+    ]
+
+    # Calculate distances
+    LEw = get_distance(LElandmarksW[0], LElandmarksW[1])
+    LEh1 = get_distance(LElandmarksH1[0], LElandmarksH1[1])
+    LEh2 = get_distance(LElandmarksH2[0], LElandmarksH2[1])
+
+    REw = get_distance(RElandmarksW[0], RElandmarksW[1])
+    REh1 = get_distance(RElandmarksH1[0], RElandmarksH1[1])
+    REh2 = get_distance(RElandmarksH2[0], RElandmarksH2[1])
+
+    # Calculate ratios
+    LERatio = (LEh1 + LEh2) / (2 * LEw) if LEw > 0 else 0
+    RERatio = (REh1 + REh2) / (2 * REw) if REw > 0 else 0
+
+    return (LERatio, RERatio)
+
+
+# def get_eye_face_ratio_AREASMETHOD(face_landmarks):
+#     # Get the coordinates from the landmarks
+#     face_coords = [
+#         (face_landmarks.landmark[i].x, face_landmarks.landmark[i].y)
+#         for i in face_border_indices
+#     ]
+#     left_eye_coords = [
+#         (face_landmarks.landmark[i].x, face_landmarks.landmark[i].y)
+#         for i in left_eye_indices
+#     ]
+#     right_eye_coords = [
+#         (face_landmarks.landmark[i].x, face_landmarks.landmark[i].y)
+#         for i in right_eye_indices
+#     ]
+
+#     # Create polygons
+#     face_polygon = Polygon(face_coords)
+#     left_eye_polygon = Polygon(left_eye_coords)
+#     right_eye_polygon = Polygon(right_eye_coords)
+
+#     # Calculate areas
+#     face_area = face_polygon.area
+#     left_eye_area = left_eye_polygon.area
+#     right_eye_area = right_eye_polygon.area
+
+#     # Calculate ratios
+#     left_eye_ratio = left_eye_area / face_area if face_area > 0 else 0
+#     right_eye_ratio = right_eye_area / face_area if face_area > 0 else 0
+
+#     return (left_eye_ratio, right_eye_ratio)
 
 
 def get_mouth_aperture_ratio(face_landmarks):
