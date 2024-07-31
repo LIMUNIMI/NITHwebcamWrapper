@@ -2,7 +2,7 @@
 **Author**: [@Neeqstock](https://github.com/Neeqstock)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/LIMUNIMI/NithFC/main/Readme_images/NithFC.png" width="50%" />
+  <img src="https://raw.githubusercontent.com/LIMUNIMI/NITHwebcamWrapper/main/Readme_images/NITHwebcamWrapper.png" width="50%" />
 </p>
 
 A Python script which extracts facial movement features in real-time by analizing the video stream of a webcam. It's part of the [NithSensors](https://github.com/LIMUNIMI/NITHsensors) collection, and it's built to be used for interaction purposes.
@@ -20,7 +20,7 @@ Landmarks extraction is provided by the [MediaPipe](https://google.github.io/med
 
 ### Step 1: Installing Python
 
-NithFC is built with Python, meaning you'll need Python installed on your computer to run it. If you're new to Python, follow this steps:
+ is built with Python, meaning you'll need Python installed on your computer to run it. If you're new to Python, follow this steps:
 
 1. Visit the [official Python website](https://www.python.org/downloads/).
 2. Download the latest version of Python for your operating system (Windows, macOS, Linux).
@@ -28,12 +28,12 @@ NithFC is built with Python, meaning you'll need Python installed on your comput
 
 For a more detailed guide, you can check out this beginner-friendly [Python installation tutorial](https://realpython.com/installing-python/).
 
-### Step 2: Download NithFC
+### Step 2: Download NITHwebcamWrapper
 
-You can download NithFC by cloning the repository from GitHub:
+You can download NITHwebcamWrapper by cloning the repository from GitHub:
 
 ```bash
-git clone https://github.com/LIMUNIMI/NithFC.git
+git clone https://github.com/LIMUNIMI/NITHwebcamWrapper.git
 ```
 
 ### Step 3: Installing Dependencies
@@ -46,17 +46,18 @@ pip install opencv-python numpy mediapipe python-osc
 
 These dependencies include packages for computer vision operations, mathematics, data handling, extracting facial landmarks, and sending data over UDP.
 
-## Running NithFC
-To run NithFC, ensure you're in the NithFC directory in your command line or terminal. Then execute:
+## Running NITHwebcamWrapper
+To run NITHwebcamWrapper, ensure you're in the NITHwebcamWrapper directory in your command line or terminal. Then execute:
 
 ```bash
 python main.py
 ```
+If you're on Windows, you can alternatively simply run `NITHwebcamWrapper.bat`.
 
-Make sure your webcam is connected and properly setup as NithFC will immediately begin to capture and analyze facial movements.
+Make sure your webcam is connected and properly setup as NITHwebcamWrapper will immediately begin to capture and analyze facial movements.
 
 ## Contributions and Support
-NithFC is licensed through a GNU GPL-v3 Free Open-Source software license. Feel free to contribute!
+NITHwebcamWrapper is licensed through a GNU GPL-v3 Free Open-Source software license. Feel free to contribute!
 
 You can open an Issue for any request regarding this code, or contact me (the developer) directly via email at *nicola.davanzo@unimi.it*.
 
