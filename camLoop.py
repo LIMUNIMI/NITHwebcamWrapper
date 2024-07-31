@@ -87,10 +87,12 @@ def main_loop():
                 face_landmarks
             )
 
+            head_roll = camDetectionFunctions.get_head_roll(face_landmarks)
+
             # region Put head rotation text
             cv2.putText(
                 image,
-                "x: " + str(np.round(x, 2)),
+                "Y: " + str(np.round(x, 2)),
                 (500, 50),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 1,
@@ -99,7 +101,7 @@ def main_loop():
             )
             cv2.putText(
                 image,
-                "y: " + str(np.round(y, 2)),
+                "P: " + str(np.round(y, 2)),
                 (500, 100),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 1,
@@ -108,7 +110,7 @@ def main_loop():
             )
             cv2.putText(
                 image,
-                "z: " + str(np.round(z, 2)),
+                "R: " + str(np.round(head_roll, 2)),
                 (500, 150),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 1,
@@ -174,9 +176,9 @@ def main_loop():
             # endregion
 
             nithFunctions.send_data(
-                x,
-                y,
-                z,
+                x * 3,
+                y * 3,
+                head_roll,
                 mouth_aperture_ratio,
                 left_eye_aperture_ratio,
                 right_eye_aperture_ratio,

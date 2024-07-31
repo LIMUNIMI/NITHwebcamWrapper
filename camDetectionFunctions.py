@@ -294,3 +294,11 @@ def get_mouth_aperture_ratio(face_landmarks):
     Mratio = mh / mw if mw > 0 else 0
 
     return Mratio
+
+
+def get_head_roll(face_landmarks):
+    # ^^ Calculate the angle described by the landmarks 127 and 356
+    p1 = Point(face_landmarks.landmark[127].x, face_landmarks.landmark[127].y)
+    p2 = Point(face_landmarks.landmark[356].x, face_landmarks.landmark[356].y)
+    angle = math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / math.pi
+    return angle

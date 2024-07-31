@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
-from pythonosc import udp_client
 from udpFunctions import send_udp_message
 
 
@@ -29,9 +28,6 @@ mp_drawing = mp.solutions.drawing_utils
 drawing_spec = mp_drawing.DrawingSpec(thickness=1, circle_radius=1)
 
 cap = cv2.VideoCapture(0)
-
-# Create OSC client
-OSCclient = udp_client.SimpleUDPClient("127.0.0.1", 8080)
 
 while cap.isOpened():
     success, image = cap.read()
