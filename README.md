@@ -1,4 +1,4 @@
-# NithFC
+# NITHwebcamWrapper
 **Author**: [@Neeqstock](https://github.com/Neeqstock)
 
 <p align="center">
